@@ -1,0 +1,126 @@
+@import '~@angular/material/theming';
+@import '~theme-vars.scss';
+
+@mixin home-component($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .nav-area {
+    order: 0;
+    flex: 0;
+    background-color: mat-color($primary, 900);
+    color: $font-light;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dir-area {
+    background-color: mat-color($primary, 300);
+    color: $font-dark;
+  }
+
+  .note-area {
+    background-color: mat-color($primary, 200);
+    color: $font-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: mat-color($primary,300);
+  }
+}
+
+h3 {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.col-title {
+  display: flex;
+  padding: 0px 5px;
+  line-height: 40px;
+}
+
+.content-area {
+	display: flex;
+  width: 100%;
+  height: calc(100vh - 24px)
+}
+
+.split-area {
+  flex: auto;
+}
+
+.top-btn-area {
+  flex: 1 1 auto;
+}
+
+.visible {
+  opacity: 0.5;
+}
+
+.tab-name {
+  flex-grow: 1;
+}
+
+.tab-close-btn {
+  display:none;
+}
+
+.mat-tab-label {
+  text-align: left !important;
+}
+
+.mat-tab-label:hover .tab-close-btn {
+  display: unset;
+}
+
+.mat-list {
+  padding: 0px !important;
+}
+
+.md-area {
+  background-color: white;
+  display :flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.md-input-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-buttons {
+  flex: 0 0 100%;
+  height: 40px;
+  display:flex;
+}
+
+.live-area {
+  padding: 10px;
+}
+
+.md-input-textarea {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+
+
+  .emoji-container {
+    margin-top: 40px;
+    z-index: 1000;
+    position: absolute;
+    max-width: 300px;
+  }
+
+  .emoji-container > span {
+    cursor: pointer;
+    font-size: 1.3em;
+    display: inline-block;
+  }

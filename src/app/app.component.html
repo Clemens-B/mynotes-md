@@ -1,0 +1,16 @@
+<div id="title-bar">
+    <h5 id="title">mynotes.md</h5>
+    <div id="title-bar-btns">
+        <button md-icon-button (click)="minimize()">
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">remove</md-icon>
+        </button>
+        <button md-icon-button (click)="maximize()">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">content_copy</md-icon>
+            </button>
+        <button md-icon-button (click)="close()">
+                    <md-icon class="md-24" aria-label="Example icon-button with a heart icon">close</md-icon>
+                </button>
+
+    </div>
+</div>
+<router-outlet></router-outlet>

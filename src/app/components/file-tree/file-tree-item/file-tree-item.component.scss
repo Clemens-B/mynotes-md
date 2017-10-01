@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+@import '~theme-vars.scss';
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin file-tree-component($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .selected:before {
+    content: '';
+    background:  mat-color($accent);
+    position: absolute;
+    width: 100%;
+    height: 48px;
+    left: 0;
+  }
+}
+
+.mat-list-icon {
+  color: $icon-dark;
+  cursor: pointer;
+}
+
+.mat-list .mat-list-item{
+  color: $font-dark;
+}
+
+ .foldercount {
+  font-size: 0.7em;
+  font-style: italic;
+ }

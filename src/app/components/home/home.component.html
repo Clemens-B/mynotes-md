@@ -1,0 +1,118 @@
+<div class="content-area">
+
+  <div class="nav-area">
+    <div class="top-btn-area">
+      <button md-icon-button (click)="toggleColumn('notebooks')" [ngClass]="{'visible': !settings.toggle.notebooks }">
+        <md-icon class="md-24" aria-label="Example icon-button with a heart icon">folder</md-icon>
+      </button>
+      <button md-icon-button (click)="toggleColumn('notes')" [ngClass]="{'visible': !settings.toggle.notes }">
+          <md-icon class="md-24" aria-label="Example icon-button with a heart icon">note</md-icon>
+        </button>
+      <button md-icon-button (click)="toggleColumn('markdown')" [ngClass]="{'visible': !settings.toggle.markdown }">
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">code</md-icon>
+          </button>
+      <button md-icon-button (click)="toggleColumn('preview')" [ngClass]="{'visible': !settings.toggle.preview }">
+              <md-icon class="md-24" aria-label="Example icon-button with a heart icon">remove_red_eye</md-icon>
+            </button>
+    </div>
+    <button md-icon-button (click)="openSettings()">
+          <md-icon class="md-24" aria-label="Example icon-button with a heart icon">settings</md-icon>
+        </button>
+  </div>
+
+  <div class="split-area">
+    <split [gutterSize]="10" (dragEnd)="onDrag($event)">
+      <split-area *ngIf="settings.toggle.notebooks" [size]="settings.splitSize.notebooks" [order]="0" class="dir-area">
+        <div class="col-title">
+          <h3>Notebooks </h3>
+          <span class="spacer"></span>
+          <button md-icon-button (click)="openAddDialog('Notebook', settings.path)" color="accent">
+          <md-icon class="md-24" aria-label="refresh">add</md-icon>
+        </button>
+          <button md-icon-button (click)="updateDir()">
+          <md-icon class="md-24" aria-label="refresh">refresh</md-icon>
+        </button>
+        </div>
+        <md-list *ngIf="tree.length" style="position: relative">
+          <tree-view [treeData]="tree" [currentPath]="settings.currentPath"></tree-view>
+        </md-list>
+      </split-area>
+      <split-area *ngIf="settings.toggle.notes" [size]="settings.splitSize.notes" [order]="1" class="note-area">
+        <div class="col-title">
+          <h3>Notes</h3>
+          <span class="spacer"></span>
+          <button md-icon-button (click)="openAddDialog('Note', settings.currentPath)" color="accent">
+            <md-icon class="md-24" aria-label="refresh">add</md-icon>
+          </button>
+          <button md-icon-button (click)="updateNotes()">
+          <md-icon class="md-24" aria-label="refresh">refresh</md-icon>
+        </button>
+        </div>
+        <md-list *ngIf="notes !== 'none'; else elseBlock" style="position: relative">
+          <note-list [notes]="notes" [currentFile]="settings.currentFileOpen.path"></note-list>
+        </md-list>
+        <ng-template #elseBlock>
+          <md-list style="position: relative">
+            <note-list [notes]="tree[0].children" [currentFile]="settings.currentFileOpen.path"></note-list>
+          </md-list>
+        </ng-template>
+
+      </split-area>
+      <split-area *ngIf="settings.toggle.markdown" [size]="settings.splitSize.markdown" [order]="2" class="md-area">
+
+        <md-tab-group (selectChange)="selectionChanged($event)" [selectedIndex]="findIndex()" color="accent">
+          <md-tab *ngFor="let file of settings.currentFiles">
+            <ng-template md-tab-label>
+              <em class="tab-name">{{file.name}}</em>
+
+              <button md-icon-button class="tab-close-btn" (click)="closeFile(file)">
+                  <md-icon class="md-24" aria-label="Example icon-button with a heart icon">close</md-icon>
+                </button>
+            </ng-template>
+          </md-tab>
+        </md-tab-group>
+        <div class="md-input-area" *ngIf="filePath">
+          <!-- <textarea name="name" class="md-input-textarea" [(ngModel)]="marked" (ngModelChange)="saveFile()"></textarea> -->
+          <div class="editor-buttons">
+            <button (click)="showEmoji = !showEmoji" md-icon-button>
+                  <md-icon class="md-24" aria-label="Example icon-button with a heart icon">tag_faces</md-icon>
+                </button>
+            <md-card *ngIf="showEmoji" class="emoji-container">
+              <span *ngFor="let emoji of emojis" (click)="onEditButton('emoji', emoji); showEmoji = !showEmoji">{{emoji}}</span>
+            </md-card>
+            <button (click)="onEditButton('bold')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">format_bold</md-icon>
+          </button>
+            <button (click)="onEditButton('italic')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">format_italic</md-icon>
+          </button>
+            <button (click)="onEditButton('link')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">link</md-icon>
+          </button>
+            <button (click)="onEditButton('task')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">playlist_add_check</md-icon>
+          </button>
+            <button (click)="onEditButton('bullet')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">format_list_bulleted</md-icon>
+          </button>
+            <button (click)="onEditButton('number')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">format_list_numbered</md-icon>
+          </button>
+            <button (click)="onEditButton('code')" md-icon-button>
+            <md-icon class="md-24" aria-label="Example icon-button with a heart icon">code</md-icon>
+          </button>
+
+          </div>
+          <md-divider></md-divider>
+          <editor style="flex-grow: 1" [(markdown)]="marked" (markdownOut)="saveFile($event)" [editButton]="editButton"></editor>
+        </div>
+
+      </split-area>
+      <split-area *ngIf="settings.toggle.preview" [size]="settings.splitSize.preview" [order]="3">
+        <div class="live-area">
+          <markdown *ngIf="markedOut" [data]="markedOut" (checkedToDo)="oncheckedToDo($event)"></markdown>
+        </div>
+      </split-area>
+    </split>
+  </div>
+</div>

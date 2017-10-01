@@ -1,0 +1,15 @@
+@import '~theme-vars.scss';
+
+.mat-list-icon {
+  color: $icon-dark;
+  cursor: pointer;
+}
+
+.mat-list .mat-list-item{
+  color: $font-dark;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default !important;
+ }

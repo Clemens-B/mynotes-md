@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+$app-primary: mat-palette($mat-grey, 900, A100, A400);
+$app-accent:  mat-palette($mat-teal);
+$app-warn:    mat-palette($mat-deep-orange);
+
+// Custom Sass colors vars (will be available in all the project)
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+$font-light: rgba(255, 255, 255, 0.87);
+$font-dark: rgba(0, 0, 0, 0.87);
+$icon-light: rgba(255, 255, 255, 0.54);
+$icon-dark: rgba(0, 0, 0, 0.54);

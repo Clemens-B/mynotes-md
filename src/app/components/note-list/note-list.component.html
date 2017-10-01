@@ -1,0 +1,7 @@
+<md-list>
+    <div *ngFor="let note of notes">
+        <div *ngIf="note.type == 'file'">
+            <note-list-item [note]="note" [currentFile]="currentFile"></note-list-item>
+        </div>
+    </div>
+</md-list>

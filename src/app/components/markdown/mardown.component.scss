@@ -1,0 +1,30 @@
+:host {
+    word-wrap: break-word;
+}
+
+.md-clipboard {
+    position: absolute;
+    right: 15px;
+    margin-top: -5px;
+    cursor: pointer;
+    z-index: 1;
+    background: transparent;
+    border: 0;
+    opacity: 0.5;
+}
+
+.md-clipboard:hover {
+    opacity: 1;
+}
+
+.md-clipboard:focus {
+    outline: none;
+}
+
+p > code {
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f7f7f9;
+    border-radius: .25rem;
+}

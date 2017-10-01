@@ -1,0 +1,16 @@
+<md-list-item (contextmenu)="onRightClick()" (click)="onSelectedFile(note.path, note)" [ngClass]="{'selected': currentFile == note.path}">
+    <md-icon md-list-icon>note</md-icon>
+    <h4 md-line> {{note.name.replace(note.extension, "")}}</h4>
+    <p md-line> {{note.modified | date}} </p>
+</md-list-item>
+<span [mdMenuTriggerFor]="menu"></span>
+<md-menu #menu="mdMenu">
+    <button md-menu-item (click)="deleteNote(note.path, note)">
+                      <md-icon>delete</md-icon>
+                      <span>Löschen</span>
+                    </button>
+    <button md-menu-item disabled>
+                      <md-icon>star</md-icon>
+                      <span>Favorite TBD</span>
+                    </button>
+</md-menu>

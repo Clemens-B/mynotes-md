@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+@import '~theme-vars.scss';
+
+@mixin app-component($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  #title-bar {
+    -webkit-app-region: drag;
+    height: 24px; 
+    background-color: mat-color($primary, 900);
+    color: mat-color($primary, 800);
+    line-height: 24px;
+    margin: 0px; 
+   }
+
+}
+
+
+ 
+ #title {
+  position: fixed;
+  top: 0px;
+  left: 6px; 
+  margin: 0;
+ }
+ 
+ #title-bar-btns {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  top: -10px;
+  right: 6px;
+ }
+  

@@ -1,0 +1,18 @@
+<h1 md-dialog-title>Settings</h1>
+<div md-dialog-content>
+  <div *ngIf="!data.path">
+
+    <p>Copy and paste the path of your markdown files in the input field. You have to use your keybord shortcuts. Make sure you copy the absolute path in there.</p>
+
+      <md-input-container style="width: 100%">
+          <input mdInput [(ngModel)]="data.path" placeholder="Directory of your markdown files">
+        </md-input-container>
+  </div>
+  <md-input-container style="width: 100%" *ngIf="data.path">
+    <input mdInput [(ngModel)]="data.path" placeholder="Directory of your markdown files">
+  </md-input-container>
+</div>
+<div md-dialog-actions>
+  <button md-button (click)="onSaveClick()" tabindex="2">Save</button>
+  <button md-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+</div>

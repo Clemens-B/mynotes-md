@@ -1,0 +1,27 @@
+<h1 md-dialog-title>New {{data.type}} </h1>
+<div md-dialog-content>
+  <p>Add new {{data.type}}:</p><br>
+  <div *ngIf="data.type =='Note'">
+    <md-input-container class="fullwidth" >
+      <input mdInput placeholder="Note Name" [(ngModel)]="data.name">
+    </md-input-container>
+  </div>
+  <div *ngIf="data.type =='Notebook'">
+
+      <md-select class="fullwidth" placeholder="select parent directory" [(ngModel)]="data.path">
+          <md-option *ngFor="let dir of dirs" [value]="dir.path">
+            {{ dir.name }}
+          </md-option>
+        </md-select>
+
+        <md-input-container class="fullwidth" >
+            <input mdInput placeholder="Notebook Name" [(ngModel)]="data.name">
+          </md-input-container>
+
+  </div>
+
+</div>
+<div md-dialog-actions>
+  <button md-button [md-dialog-close]="data" tabindex="2">Save</button>
+  <button md-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+</div>

@@ -1,0 +1,8 @@
+<div *ngIf="treeData !== 'none'; else elseBlock">
+    <div *ngFor="let folder of treeData">
+        <div *ngIf="folder.type == 'directory'">
+            <file-tree-item [folder]="folder" [currentPath]="currentPath"></file-tree-item>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>Please select first the directory of your markdown files. Click the </ng-template>

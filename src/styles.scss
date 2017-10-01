@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./theming.scss";
+@import 'app/components/file-tree/file-tree-item/file-tree-item.component.scss';
+@import 'app/components/home/home.component.scss';
+@import 'app/app.component.scss';
+
+@include file-tree-component($app-theme);
+@include home-component($app-theme);
+@include app-component($app-theme);
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mat-line{
+  padding-top: 0;
+  cursor: pointer;
+}
+
+split-gutter {
+  cursor: e-resize !important;
+  background: none !important;
+  z-index: 9999;
+  margin-left: -10px; //same as gutter size
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+outline: unset;
+}
+
+.ace_gutter {
+  background: inherit !important;
+  border-right: 1px solid lightgray;
+}
+
+blockquote{
+  display:block;
+  background: #fff;
+  padding: 10px 10px 10px 35px;
+  margin: 0 0 20px;
+  position: relative;
+ 
+  border-left: 10px solid $accent;
+}
+
+blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #999;
+
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+
+blockquote::after{
+  content: "";
+}
+
+p > code {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  font-family: inherit;
+  color: $accent;
+  background-color: #EEEEEE;
+  border-radius: .25rem;
+}
+
+
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  -webkit-appearance: none;
+  margin-left: -25px;
+  position: relative;
+  padding-right: 8px;
+}
+
+input[type="checkbox"]:after {
+  border-color: rgba(0, 0, 0, 0.54);
+}
+
+input[type="checkbox"]:disabled:after{
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+input[type="checkbox"]:focus {
+  outline: none;
+}
+ 
+input[type="checkbox"]:after {
+  border: 2px solid;
+  border-radius: 2px;
+  content: '';
+  display: flex;
+  height: 13px;
+  transition: 240ms;
+  width: 13px;
+}
+
+input[type="checkbox"]:checked:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 6px;
+  top: 0;
+  display: table;
+  width: 5px;
+  height: 11px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: '';
+}
+
+input[type="checkbox"]:checked:after {
+  background-color: $accent;
+  border-color: $accent;
+}
+
+input[type="checkbox"]:disabled:checked:after{
+  background-color: rgba(0, 0, 0, 0.26);
+  border-color: transparent;
+}
+
+#loading {
+  display: flex;
+  height: 100%;
+}
+
+#loading-list {
+  margin: auto
+}
+
+/* fade in */
+#loading-list > li {
+    opacity: 0;
+    list-style: none;
+}
+
+li#one {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 1s;
+}
+
+li#two {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 2.5s;
+}
+
+li#three {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 4s;
+}
+
+li#four {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 5.5s;
+}
+
+li#five {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 7s;
+}
+
+li#six {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 8.5s;
+}
+
+li#seven {
+	animation: fade 2s ease-in-out forwards;
+	animation-delay: 10s;
+}
+
+@-webkit-keyframes fade {
+	100% { opacity: 1; }
+}
+
+@-moz-keyframes fade {
+	100% { opacity: 1; }
+}
+
+@-o-keyframes fade {
+	100% { opacity: 1; }
+}
+
+@keyframes fade {
+	100% { opacity: 1; }
+}
