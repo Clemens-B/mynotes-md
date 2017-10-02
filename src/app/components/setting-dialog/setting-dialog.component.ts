@@ -3,8 +3,6 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { SettingStoreService } from '../../providers/settings.service';
 import { DirService } from '../../providers/dir.service';
 
-const Store = require('electron-store');
-
 @Component({
   selector: 'setting-dialog',
   templateUrl: 'setting-dialog.component.html',

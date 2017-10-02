@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import 'rxjs/add/operator/takeUntil';
 import { join } from 'path';
 import { MdDialog } from '@angular/material';
-import { MarkdownService } from 'angular2-markdown';
 import { Subject } from 'rxjs/Subject';
 import { Editor } from '../editor/editor.component';
 
