@@ -48,7 +48,7 @@
     "@angular/platform-browser-dynamic": "4.4.3",
     "@angular/router": "4.4.3",
     "ace-builds": "git+https://github.com/ajaxorg/ace-builds.git#master",
-    "angular-split": "^0.2.2",
+    "angular-split": "git+https://github.com/Clemens-B/angular-split.git",
     "clipboard": "^1.7.1",
     "core-js": "2.4.1",
     "directory-tree": "git+https://github.com/Clemens-B/node-directory-tree.git",
