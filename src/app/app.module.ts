@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AngularSplitModule } from 'angular-split';
-import { MaterialModule } from '@angular/material';
+import { MatButtonModule, MatListModule, MatTabsModule, MatCardModule, MatIconModule, MatMenuModule, MatTooltipModule, MatDialogModule, MatSelectModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,7 +20,6 @@ import { AddDialog } from './components/add-dialog/add-dialog.component';
 import { SettingDialog } from './components/setting-dialog/setting-dialog.component';
 import { MarkdownComponent } from './components/markdown/markdown.component';
 import { Editor } from './components/editor/editor.component';
-
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -53,7 +52,7 @@ import { MarkdownService } from './providers/markdown.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularSplitModule,
-    MaterialModule,
+    MatButtonModule, MatListModule, MatTabsModule, MatCardModule, MatIconModule, MatMenuModule, MatTooltipModule, MatDialogModule, MatSelectModule, MatInputModule, MatSnackBarModule
   ],
   entryComponents: [AddDialog, SettingDialog],
   providers: [ElectronService, DirService, SettingStoreService, MarkdownService],
