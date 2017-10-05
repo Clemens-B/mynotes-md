@@ -23,7 +23,7 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/clipboard/dist/clipboard.min.js"
+        "./node_modules/clipboard/dist/clipboard.min.js"
         //to get this work, something like this https://github.com/angular-ui/ui-ace/issues/23 has to be implemented. Otherwise setTheme and setMode will cause a "define is not defined" error
         // "../node_modules/ace-builds/src-min-noconflict/ace.js",
         // "../node_modules/ace-builds/src-min-noconflict/theme-github.js",

@@ -21,10 +21,12 @@ function createWindow() {
     y: 0,
     width: size.width,
     height: size.height,
-    frame: false
+    backgroundColor: '#ffffff',
+    frame: false,
+    show: false
   });
 
-  win.maximize()
+  // win.maximize()
 
   // and load the index.html of the app.
   win.loadURL('file://' + __dirname + '/index.html');
@@ -34,6 +36,11 @@ function createWindow() {
     win.webContents.openDevTools();
   }
 
+  win.once('ready-to-show', () => {
+    win.show()
+  })
+
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -42,7 +49,7 @@ function createWindow() {
     win = null;
   });
 
-  win.on('new-window', function(event, url){
+  win.on('new-window', function (event, url) {
     event.preventDefault();
     open(url);
   });
@@ -54,6 +61,8 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   app.on('ready', createWindow);
+
+
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {

@@ -16,6 +16,10 @@ html, body {
   overflow: hidden;
 }
 
+body {
+  animation: fadein 0.5s;
+}
+
 .mat-line{
   padding-top: 0;
   cursor: pointer;
@@ -137,68 +141,11 @@ input[type="checkbox"]:disabled:checked:after{
   border-color: transparent;
 }
 
-#loading {
-  display: flex;
-  height: 100%;
-}
-
-#loading-list {
-  margin: auto
-}
-
-/* fade in */
-#loading-list > li {
+@keyframes fadein {
+  from {
     opacity: 0;
-    list-style: none;
-}
-
-li#one {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 1s;
-}
-
-li#two {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 2.5s;
-}
-
-li#three {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 4s;
-}
-
-li#four {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 5.5s;
-}
-
-li#five {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 7s;
-}
-
-li#six {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 8.5s;
-}
-
-li#seven {
-	animation: fade 2s ease-in-out forwards;
-	animation-delay: 10s;
-}
-
-@-webkit-keyframes fade {
-	100% { opacity: 1; }
-}
-
-@-moz-keyframes fade {
-	100% { opacity: 1; }
-}
-
-@-o-keyframes fade {
-	100% { opacity: 1; }
-}
-
-@keyframes fade {
-	100% { opacity: 1; }
+  }
+  to {
+    opacity: 1;
+  }
 }
